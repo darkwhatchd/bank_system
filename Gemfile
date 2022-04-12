@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.1'
 
+gem 'devise'
+
 # Gem added to bug fix --net-smtp issue
 gem 'net-smtp', require: false
 
