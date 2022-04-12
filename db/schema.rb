@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_173033) do
+ActiveRecord::Schema.define(version: 2022_04_12_223932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2022_04_12_173033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.datetime "transfer_date"
+    t.decimal "value", precision: 10, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "destiny_account_id"
+    t.index ["account_id"], name: "index_transfers_on_account_id"
+    t.index ["destiny_account_id"], name: "index_transfers_on_destiny_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +50,6 @@ ActiveRecord::Schema.define(version: 2022_04_12_173033) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "transfers", "accounts"
+  add_foreign_key "transfers", "accounts", column: "destiny_account_id"
 end
