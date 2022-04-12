@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.1'
 
 gem 'devise'
+gem 'enumerize'
 
 # Gem added to bug fix --net-smtp issue
 gem 'net-smtp', require: false
