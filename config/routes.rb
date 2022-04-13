@@ -4,5 +4,5 @@ Rails.application.routes.draw do
                        registrations: "users/registrations",
                      }
 
-  resources :transfers, only: %i[new create]
+  resources :transfers, only: %i[new create show]
 end
