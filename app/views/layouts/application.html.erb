@@ -11,6 +11,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+    <section class="section px-0 py-0">
+      <div class="row" id="columns-body">
+        <div class="col-2 pb-0 d-none d-sm-block" id="column-body">
+          <%= render "layouts/side_navbar" %>
+        </div>
+        <div class="col" id="column-body">
+          <%= yield %>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

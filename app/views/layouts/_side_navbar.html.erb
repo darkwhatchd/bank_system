@@ -1,0 +1,14 @@
+<ul class="nav flex-column ms-3">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= new_operation_path(operable_type: "Withdrawal") %>">Cash Withdrawal</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= new_operation_path(operable_type: "Deposit") %>">Cash Deposit</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= new_transfer_path %>">Cash Transfer</a>
+  </li>
+</ul>
