@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap/scss/bootstrap";
+
+ body, html{
+  height: 100%;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.section {
+  height: 100%;
+}
+
+ #columns-body {
+  height: 100%;
+  #column-body {
+    height: 100%;
+    #menu-body {
+      height: 100%;
+    }
+  }
+ }
