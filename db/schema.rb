@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_223932) do
+ActiveRecord::Schema.define(version: 2022_04_13_141716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2022_04_12_223932) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "operations", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.decimal "value", precision: 10, scale: 2
+    t.datetime "operation_date"
+    t.string "operable_type", null: false
+    t.bigint "operable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_operations_on_account_id"
+    t.index ["operable_type", "operable_id"], name: "index_operations_on_operable"
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -49,7 +66,13 @@ ActiveRecord::Schema.define(version: 2022_04_12_223932) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "withdrawals", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "accounts", "users"
+  add_foreign_key "operations", "accounts"
   add_foreign_key "transfers", "accounts"
   add_foreign_key "transfers", "accounts", column: "destiny_account_id"
 end
