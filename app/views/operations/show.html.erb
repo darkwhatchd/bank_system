@@ -1,0 +1,6 @@
+<h1><%= @operation.operable_type %> data</h1>
+<div>
+  <p>Operation Date: <%= @operation.operation_date.strftime("%H:%M, %d/%m/%Y") %></p>
+  <p>Value: <%= @operation.value %></p>
+  <%= link_to "Home", root_path %>
+</div>
