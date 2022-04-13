@@ -25,7 +25,7 @@ RSpec.describe DifferentUserValidator do
     before { subject.account = account }
     before { subject.destiny_account = other_account }
 
-    it "must be invalid" do
+    it "must be valid" do
       expect(subject).to be_valid
     end
   end

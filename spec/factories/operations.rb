@@ -3,6 +3,8 @@ FactoryBot.define do
     account
     value { rand(1..10_000) }
     operation_date { Time.now }
-    operable { nil }
+    after :build do |operation|
+      operation.operable = create(:deposit)
+    end
   end
 end
