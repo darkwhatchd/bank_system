@@ -3,6 +3,8 @@
 <div>
   <% if current_user %>
     <%= link_to "Transfer", new_transfer_path %>
+    <%= link_to "Cash Withdrawal", new_operation_path(operable_type: "Withdrawal") %>
+    <%= link_to "Cash Deposit", new_operation_path(operable_type: "Deposit") %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to "Sign In", new_user_session_path %>

@@ -1,0 +1,5 @@
+<% operable_type = params[:operable_type] unless params[:operable_type].nil? %>
+
+<h1><%= operable_type %></h1>
+
+<%= render 'form', operable_type: operable_type %>

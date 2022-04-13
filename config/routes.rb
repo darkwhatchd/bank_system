@@ -5,4 +5,5 @@ Rails.application.routes.draw do
                      }
 
   resources :transfers, only: %i[new create show]
+  resources :operations, only: %i[new create show]
 end
