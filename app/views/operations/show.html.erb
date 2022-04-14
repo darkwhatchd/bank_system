@@ -1,6 +1,16 @@
-<h1><%= @operation.operable_type %> data</h1>
-<div>
-  <p>Operation Date: <%= @operation.operation_date.strftime("%H:%M, %d/%m/%Y") %></p>
-  <p>Value: <%= @operation.value %></p>
-  <%= link_to "Home", root_path %>
+<h1 class="fs-2 mt-3"><%= @operation.operable_type %> data</h1>
+<hr>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <p>Operation Date: <%= @operation.operation_date.strftime("%H:%M, %d/%m/%Y") %></p>
+          <p>Value: R$ <%= @operation.value %></p>
+          <%= link_to "Home", root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

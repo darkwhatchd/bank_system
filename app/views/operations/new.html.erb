@@ -1,5 +1,17 @@
 <% operable_type = params[:operable_type] unless params[:operable_type].nil? %>
+<% operable_type = "Deposit" if params[:operable_type].nil? && operable_type.nil? %>
 
-<h1><%= operable_type %></h1>
+<h1 class="fs-2 mt-3">Cash <%= operable_type %></h1>
+<hr>
 
-<%= render 'form', operable_type: operable_type %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <p>Cash in your account:</p>
+        <h1 class="fs-4">R$ <%= current_user.account.account_balance %></h1>
+        <%= render 'form', operable_type: operable_type %>
+      </div>
+    </div>
+  </div>
+</div>

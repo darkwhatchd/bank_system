@@ -12,24 +12,20 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :destiny_account_id, class: "label" %>
-      <%= form.number_field :destiny_account_id, autofocus: true, placeholder: "Destiny account number" %>
+      <%= form.label :destiny_account_id, class: "form-label" %>
+      <%= form.number_field :destiny_account_id, autofocus: true, placeholder: "Destiny account ID", class: "form-control" %>
     </div>
 
     <div class="field">
-      <%= form.label :value, class: "label" %>
+      <%= form.label :value, class: "form-label" %>
       <div class="control">
-        <%= form.number_field :value, step: 0.01, placeholder: "Value" %>
+        <%= form.number_field :value, step: 0.01, placeholder: "Value", class: "form-control", value: 0 %>
       </div>
     </div>
 
-    <div class="field">
-      <div class="control">
-        <%= form.submit "Transfer" %>
-      </div>
-      <div class="control">
-        <%= link_to "Cancel", root_path %>
-      </div>
+    <div class="field mt-3">
+      <%= form.submit "Transfer", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary" %>
     </div>
   </div>
 <% end %>
