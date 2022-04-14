@@ -12,21 +12,15 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :value, class: "label" %>
-      <div class="control">
-        <%= form.number_field :value, step: 0.01, placeholder: "Value" %>
-      </div>
+      <%= form.label :value, class: "form-label" %>
+      <%= form.number_field :value, step: 0.01, placeholder: "Value", value: 0, class: "form-control" %>
     </div>
 
     <%= form.hidden_field :operable_type, value: operable_type %>
 
-    <div class="field">
-      <div class="control">
-        <%= form.submit "Send" %>
-      </div>
-      <div class="control">
-        <%= link_to "Cancel", root_path %>
-      </div>
+    <div class="field mt-3">
+      <%= form.submit "Send", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary" %>
     </div>
   </div>
 <% end %>
