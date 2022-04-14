@@ -11,5 +11,8 @@ class TransferSavingService
     else
       @record.save
     end
+  rescue => exception
+    @record.errors.add :value, message: exception
+    @record.save
   end
 end
