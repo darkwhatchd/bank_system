@@ -5,8 +5,7 @@ class Account < ApplicationRecord
 
   has_many :transfers, dependent: :destroy
   has_many :operations
-  has_many :withdrawals, through: :operations
-  has_many :deposits, through: :operations
+  has_many :statements
 
   validates :account_balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :status, presence: true
