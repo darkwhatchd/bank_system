@@ -9,7 +9,7 @@ class StatementsController < ApplicationController
   end
 
   def create
-    @statement = Statement.new(statement_params)
+    @statement = Statement.new(statement_params.merge({ account_id: current_user.account.id }))
 
     if @statement.save
       redirect_to @statement, notice: "Bank statement success!"
