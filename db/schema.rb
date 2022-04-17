@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_13_141716) do
+ActiveRecord::Schema.define(version: 2022_04_14_042529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2022_04_13_141716) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_operations_on_account_id"
     t.index ["operable_type", "operable_id"], name: "index_operations_on_operable"
+  end
+
+  create_table "statements", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "finish_date"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_statements_on_account_id"
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -73,6 +82,7 @@ ActiveRecord::Schema.define(version: 2022_04_13_141716) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "operations", "accounts"
+  add_foreign_key "statements", "accounts"
   add_foreign_key "transfers", "accounts"
   add_foreign_key "transfers", "accounts", column: "destiny_account_id"
 end
