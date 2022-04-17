@@ -1,13 +1,19 @@
 class OperationsController < ApplicationController
   def show
     @operation = Operation.find(params[:id])
+
+    authorize @operation
   end
 
   def new
+    authorize Operation
+
     @operation = Operation.new
   end
 
   def create
+    authorize Operation
+
     @operation = current_user.account.operations.new(operation_params.merge({ operation_date: Time.now }))
     operable_type = params[:operation][:operable_type]
 

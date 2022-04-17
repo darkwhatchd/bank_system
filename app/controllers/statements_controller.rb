@@ -1,14 +1,21 @@
 class StatementsController < ApplicationController
   def show
     @statement = Statement.find(params[:id])
+
+    authorize @statement
+
     @operations = SelectOperationsService.new(@statement).call
   end
 
   def new
+    authorize Statement
+
     @statement = Statement.new
   end
 
   def create
+    authorize Statement
+
     @statement = Statement.new(statement_params.merge({ account_id: current_user.account.id }))
 
     if @statement.save
