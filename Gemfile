@@ -5,6 +5,7 @@ ruby '3.1.1'
 
 gem 'devise'
 gem 'enumerize'
+gem 'pundit'
 
 # Gem added to bug fix --net-smtp issue
 gem 'net-smtp', require: false
