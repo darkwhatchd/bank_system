@@ -9,6 +9,7 @@ gem 'pundit'
 
 # Gem added to bug fix --net-smtp issue
 gem 'net-smtp', require: false
+gem 'net-pop', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
