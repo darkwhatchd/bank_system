@@ -7,10 +7,10 @@
     <div class="card">
       <div class="card-body">
         <% @operations.each do |op| %>
-          <% if op.class == Operation %>
-            <p><strong><%= op.operable_type %></strong></p>
-            <p>Value: R$ <%= op.value %></p>
-            <p class="text-end"><%= op.operation_date.strftime("%d/%m/%Y - %H:%M") %></p>
+          <% if op.class == Deposit || op.class == Withdrawal %>
+            <p><strong><%= op.class %></strong></p>
+            <p>Value: R$ <%= op.operation.value %></p>
+            <p class="text-end"><%= op.operation.operation_date.strftime("%d/%m/%Y - %H:%M") %></p>
           <% else %>
             <p><strong><%= op.class %></strong></p>
             <p><i>Destiny account data:</i></p>

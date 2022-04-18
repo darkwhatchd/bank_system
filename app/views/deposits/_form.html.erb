@@ -1,0 +1,31 @@
+<%= form_with(model: @deposit) do |form| %>
+  <div class="box">
+    <% if @deposit.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@deposit.errors.count, "error") %> prohibited this deposit from being saved:</h2>
+        <ul>
+          <% @deposit.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :account_id, class: "form-label" %>
+      <%= form.number_field :account_id, autofocus: true, placeholder: "Destiny account ID", class: "form-control" %>
+    </div>
+
+    <%= form.fields_for :operation do |f|%>
+      <div class="field">
+        <%= f.label :value, class: "form-label" %>
+        <%= f.number_field :value, step: 0.01, placeholder: "Value", value: 0, class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div class="field mt-3">
+      <%= form.submit "Send", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<h1 class="fs-2 mt-3"><%= @operation.operable_type %> data</h1>
+<h1 class="fs-2 mt-3"><%= @withdrawal.class %> data</h1>
 <hr>
 
 <div class="row">
@@ -6,8 +6,8 @@
     <div class="card">
       <div class="card-body">
         <div>
-          <p>Operation Date: <%= @operation.operation_date.strftime("%H:%M, %d/%m/%Y") %></p>
-          <p>Value: R$ <%= @operation.value %></p>
+          <p>Withdrawal Date: <%= @withdrawal.operation.operation_date.strftime("%d/%m/%Y, %H:%M") %></p>
+          <p>Value: R$ <%= @withdrawal.operation.value %></p>
           <%= link_to "Home", root_path, class: "btn btn-primary" %>
         </div>
       </div>

@@ -20,7 +20,7 @@ class TransfersController < ApplicationController
 
     @transfer.value += TaxCalculateService.new(@transfer).call
 
-    if TransferSavingService.new(@transfer).call
+    if TransferSavingService.new(@transfer, @transfer.value).call
       MoneyTransferService.new(@transfer).call
       redirect_to transfer_path(@transfer), notice: "Transfer success!"
     else

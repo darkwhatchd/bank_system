@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_042529) do
+ActiveRecord::Schema.define(version: 2022_04_17_161610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(version: 2022_04_14_042529) do
   end
 
   create_table "deposits", force: :cascade do |t|
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_deposits_on_account_id"
   end
 
   create_table "operations", force: :cascade do |t|
-    t.bigint "account_id", null: false
     t.decimal "value", precision: 10, scale: 2
     t.datetime "operation_date"
     t.string "operable_type", null: false
     t.bigint "operable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_operations_on_account_id"
     t.index ["operable_type", "operable_id"], name: "index_operations_on_operable"
   end
 
@@ -76,13 +76,16 @@ ActiveRecord::Schema.define(version: 2022_04_14_042529) do
   end
 
   create_table "withdrawals", force: :cascade do |t|
+    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_withdrawals_on_account_id"
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "operations", "accounts"
+  add_foreign_key "deposits", "accounts"
   add_foreign_key "statements", "accounts"
   add_foreign_key "transfers", "accounts"
   add_foreign_key "transfers", "accounts", column: "destiny_account_id"
+  add_foreign_key "withdrawals", "accounts"
 end

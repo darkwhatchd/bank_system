@@ -1,5 +1,4 @@
 class Operation < ApplicationRecord
-  belongs_to :account
   belongs_to :operable, polymorphic: true
 
   validates :value, presence: true, numericality: { greater_than: 0 }
