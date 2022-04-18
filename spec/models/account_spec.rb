@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe Account, type: :model do
   it { is_expected.to belong_to :user }
   it { is_expected.to have_many :transfers }
-  it { is_expected.to have_many :operations }
+  it { is_expected.to have_many :deposits }
+  it { is_expected.to have_many :withdrawals }
   it { is_expected.to have_many :statements }
 
   it { is_expected.to validate_presence_of(:account_balance) }
