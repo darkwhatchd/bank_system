@@ -1,0 +1,16 @@
+<h1 class="fs-2 mt-3">Transfer Data</h1>
+<hr>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <p>Destiny Account: <%= @transfer.destiny_account.id %></p>
+        <p>Destiny Username: <%= @transfer.destiny_account.user.name %></p>
+        <p>Transfer Date: <%= @transfer.transfer_date.strftime("%H:%M, %d/%m/%Y") %></p>
+        <p>Value: R$ <%= @transfer.value %></p>
+        <%= link_to "Home", root_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

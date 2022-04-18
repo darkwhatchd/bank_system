@@ -1,0 +1,28 @@
+<h1 class="fs-2 mt-3">Bank Statement</h1>
+<p>from: <%= @statement.start_date.strftime("%d/%m/%Y - %H:%M") %> to <%= @statement.finish_date.strftime("%d/%m/%Y - %H:%M") %></p>
+<hr>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <% @operations.each do |op| %>
+          <% if op.class == Deposit || op.class == Withdrawal %>
+            <p><strong><%= op.class %></strong></p>
+            <p>Value: R$ <%= op.operation.value %></p>
+            <p class="text-end"><%= op.operation.operation_date.strftime("%d/%m/%Y - %H:%M") %></p>
+          <% else %>
+            <p><strong><%= op.class %></strong></p>
+            <p><i>Destiny account data:</i></p>
+            <p>Account number: <%= op.destiny_account.id %></p>
+            <p>User: <%= op.destiny_account.user.name %></p>
+            <p>Value: R$ <%= op.value %></p>
+            <p class="text-end"><%= op.transfer_date.strftime("%d/%m/%Y - %H:%M") %></p>
+          <% end %>
+          <hr>
+        <% end %>
+        <%= link_to "Home", root_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

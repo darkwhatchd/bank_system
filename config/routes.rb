@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "home#index"
+  devise_for :users, controllers: {
+                       registrations: "users/registrations",
+                     }
+
+  resources :transfers, only: %i[new create show]
+  resources :withdrawals, only: %i[new create show]
+  resources :deposits, only: %i[new create]
+  resources :statements, only: %i[new create show]
 end

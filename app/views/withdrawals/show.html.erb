@@ -1,0 +1,16 @@
+<h1 class="fs-2 mt-3"><%= @withdrawal.class %> data</h1>
+<hr>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <p>Withdrawal Date: <%= @withdrawal.operation.operation_date.strftime("%d/%m/%Y, %H:%M") %></p>
+          <p>Value: R$ <%= @withdrawal.operation.value %></p>
+          <%= link_to "Home", root_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

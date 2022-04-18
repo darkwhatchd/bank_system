@@ -1,0 +1,14 @@
+<h1 class="fs-2 mt-3">Cash Transfer</h1>
+<hr>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <p>Cash in your account:</p>
+        <h1 class="fs-4">R$ <%= current_user.account.account_balance %></h1>
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

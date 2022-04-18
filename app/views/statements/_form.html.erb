@@ -1,0 +1,31 @@
+<%= form_with(model: @statement) do |form| %>
+  <div class="box">
+    <% if @statement.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@statement.errors.count, "error") %> prohibited this statement from being saved:</h2>
+        <ul>
+          <% @statement.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :start_date, class: "form-label" %>
+      <%= form.text_field :start_date, class: "datetimepicker" %>
+    </div>
+
+    <br>
+
+    <div class="field">
+      <%= form.label :finish_date, class: "form-label" %>
+      <%= form.text_field :finish_date, class: "datetimepicker" %>
+    </div>
+
+    <div class="field mt-3">
+      <%= form.submit "Send", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

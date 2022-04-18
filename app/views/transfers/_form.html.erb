@@ -1,0 +1,31 @@
+<%= form_with(model: @transfer) do |form| %>
+  <div class="box">
+    <% if @transfer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
+        <ul>
+          <% @transfer.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :destiny_account_id, class: "form-label" %>
+      <%= form.number_field :destiny_account_id, autofocus: true, placeholder: "Destiny account ID", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :value, class: "form-label" %>
+      <div class="control">
+        <%= form.number_field :value, step: 0.01, placeholder: "Value", class: "form-control", value: 0 %>
+      </div>
+    </div>
+
+    <div class="field mt-3">
+      <%= form.submit "Transfer", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>
