@@ -1,18 +1,15 @@
 class TransferSavingService
-  def initialize(record, operation_type = nil)
+  def initialize(record, value)
     @record = record
-    @operation_type = operation_type
+    @value = value
   end
 
   def call
-    if @record.value > @record.account.account_balance && @operation_type != "Deposit"
-      @record.errors.add :value, message: "can't be more than you have in account!"
+    if @value - TaxCalculateService.new(@record).call <= 0
+      @record.errors.add :base, message: "must transfer more than 0!"
       false
     else
       @record.save
     end
-  rescue => exception
-    @record.errors.add :value, message: exception
-    @record.save
   end
 end

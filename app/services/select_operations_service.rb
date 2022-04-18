@@ -4,14 +4,21 @@ class SelectOperationsService
   end
 
   def call
-    @operations = select_operations
+    @withdrawals = select_withdrawals
+    @deposits = select_deposits
     @transfers = select_transfers
-    @transfers_operations = @operations.concat(@transfers).sort_by { |element| element.created_at }.reverse
+    @transfers_operations = @withdrawals.concat(@transfers, @deposits).sort_by { |element| element.created_at }.reverse
   end
 
-  def select_operations
-    @operations = @statement.account.operations.select do |op|
-      op.operation_date >= @statement.start_date && op.operation_date <= @statement.finish_date
+  def select_withdrawals
+    @withdrawals = @statement.account.withdrawals.select do |wd|
+      wd.operation.operation_date >= @statement.start_date && wd.operation.operation_date <= @statement.finish_date
+    end
+  end
+
+  def select_deposits
+    @deposits = @statement.account.deposits.select do |dp|
+      dp.operation.operation_date >= @statement.start_date && dp.operation.operation_date <= @statement.finish_date
     end
   end
 

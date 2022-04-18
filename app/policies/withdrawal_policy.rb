@@ -1,4 +1,4 @@
-class OperationPolicy < ApplicationPolicy
+class WithdrawalPolicy < ApplicationPolicy
   def show?
     user&.account&.active? && record&.account&.user == user
   end

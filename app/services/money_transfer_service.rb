@@ -1,15 +1,14 @@
 class MoneyTransferService
-  def initialize(record, operation_type = nil)
+  def initialize(record)
     @record = record
-    @operation_type = operation_type
   end
 
   def call
-    if @operation_type == "Withdrawal"
-      @record.account.account_balance -= @record.value
+    if @record.class == Withdrawal
+      @record.account.account_balance -= @record.operation.value
       @record.account.save
-    elsif @operation_type == "Deposit"
-      @record.account.account_balance += @record.value
+    elsif @record.class == Deposit
+      @record.account.account_balance += @record.operation.value
       @record.account.save
     else
       @record.account.account_balance -= @record.value

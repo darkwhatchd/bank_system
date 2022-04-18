@@ -3,8 +3,9 @@ class Account < ApplicationRecord
 
   belongs_to :user
 
-  has_many :transfers, dependent: :destroy
-  has_many :operations
+  has_many :transfers
+  has_many :withdrawals
+  has_many :deposits
   has_many :statements
 
   validates :account_balance, presence: true, numericality: { greater_than_or_equal_to: 0 }

@@ -16,5 +16,8 @@ class TaxCalculateService
     else
       return tax += 5
     end
+  rescue => exception
+    @record.errors.add :base, message: "exception"
+    render :new
   end
 end

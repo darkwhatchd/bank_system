@@ -1,5 +1,6 @@
 <h1 class="fs-2 mt-3">Welcome to Bank System</h1>
 <p class="text-danger"><%= flash[:alert] %></p>
+<p class="text-success"><%= flash[:notice] %></p>
 <hr>
 <div class="row">
   <div class="col-8 offset-2">
@@ -13,10 +14,10 @@
           <p>What you want to do?</p>
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
-              <%= link_to "Cash Withdrawal", new_operation_path(operable_type: "Withdrawal"), class: "btn btn-primary" %>
+              <%= link_to "Cash Withdrawal", new_withdrawal_path, class: "btn btn-primary" %>
             </div>
             <div class="btn-group me-2" role="group" aria-label="Second group">
-              <%= link_to "Cash Deposit", new_operation_path(operable_type: "Deposit"), class: "btn btn-secondary" %>
+              <%= link_to "Cash Deposit", new_deposit_path, class: "btn btn-secondary" %>
             </div>
             <div class="btn-group me-2" role="group" aria-label="Third group">
               <%= link_to "Transfer", new_transfer_path, class: "btn btn-warning" %>
